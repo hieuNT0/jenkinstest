@@ -8,8 +8,28 @@ pipeline {
             }
         }
         stage('Test on Linux') {
-            agent { 
-                label 'linux'
+            agent {
+                kubernetes {
+      label 'slave'
+      defaultContainer 'jnlp'
+      yaml """
+apiVersion: v1
+kind: Pod
+metadata:
+labels:
+  component: ci
+spec:
+  # Use service account that can deploy to all namespaces
+  # serviceAccountName: cd-jenkins
+  containers:
+  - name: busybox
+    image: busybox
+    command:  
+  - name: echo
+    command:
+    - echo "`ls /`"
+"""
+}
             }
             steps {
                 echo 'app' 
