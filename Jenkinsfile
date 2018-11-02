@@ -15,11 +15,6 @@ pipeline {
                 echo 'app' 
                 echo 'make check'
             }
-            post {
-                always {
-                    junit '**/target/*.xml'
-                }
-            }
         }
     }
 }
