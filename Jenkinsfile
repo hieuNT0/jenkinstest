@@ -8,7 +8,9 @@ pipeline {
             }
         }
         stage('Test on Linux') {
-            agent kubernetes
+            agent {
+                kubernetes
+            }
             steps {
                 echo 'app' 
                 echo 'make check'
