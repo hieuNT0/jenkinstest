@@ -1,2 +1,2 @@
 # jenkinstest
-learn to use jenkins
+Learn to use jenkins.
